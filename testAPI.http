@@ -1,0 +1,41 @@
+### GET request with a header
+GET http://91.241.64.178:7081/api/users
+Accept: application/json
+
+> {%
+client.global.set("CookieSet", response.body.json.Set-Cookie);
+%}
+
+###
+
+# POST REQUEST
+POST http://91.241.64.178:7081/api/users
+Content-Type: application/json
+Cookie: {CookieSet}
+
+  {
+    "id": 3,
+    "name": "James",
+    "lastName": "Brown",
+    "age": 33
+  }
+
+###
+PUT http://91.241.64.178:7081/api/users
+Content-Type: application/json
+Cookie: {CookieSet}
+
+{
+  "id": 3,
+  "name": "Thomas",
+  "lastName": "Shelby",
+  "age": 33
+}
+
+###
+DELETE http://91.241.64.178:7081/api/users/3
+Content-Type: application/json
+Cookie: {CookieSet}
+
+#%}
+
